@@ -29,6 +29,16 @@ A simple dictionary application built using HTML, CSS, and JavaScript. This app 
 4. Click the "Add to Favorites" button to add a word to the favorites list.
 5. The favorites list will show all the saved favorite words. Click on a word in the list to search for its meanings again.
 6. If an error occurs while fetching data from the API, an error message will be displayed.
+
+## Contributor's Guide
+Contributions to the Dictionary App are welcome! If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your changes to your forked repository.
+5. Submit a pull request detailing your changes.
+
 ## License
 This project is licensed under the MIT License.
 
@@ -38,4 +48,4 @@ CSS styling inspired by Bootstrap
 ## Author
 Created by @kway
 
-Feel free to contribute and improve the project!
+Feel free to explore, use, and contribute to the Dictionary App!
