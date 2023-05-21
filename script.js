@@ -1,25 +1,31 @@
+// Get references to HTML elements
 const searchBtn = document.getElementById('search-btn');
 const searchInput = document.getElementById('search-input');
 const resultContainer = document.getElementById('result-container');
 const errorMessage = document.getElementById('error-message');
 const favoritesList = document.getElementById('favorites-list');
 
-const favorites = []; // Array to store favorite words
+// Array to store favorite words
+const favorites = [];
 
+// Event listener for the "click" event on the search button
 searchBtn.addEventListener('click', () => {
   performSearch();
 });
 
+// Event listener for the "keyup" event on the search input field, specifically for the "Enter" key
 searchInput.addEventListener('keyup', (event) => {
   if (event.key === 'Enter') {
     performSearch();
   }
 });
 
+// Function to perform the search
 function performSearch() {
   const word = searchInput.value.trim();
 
   if (word !== '') {
+    // Fetch data from API
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(response => response.json())
       .then(data => {
@@ -34,6 +40,7 @@ function performSearch() {
   }
 }
 
+// Function to display search results
 function displayResults(data) {
   resultContainer.innerHTML = '';
 
@@ -48,7 +55,6 @@ function displayResults(data) {
 
     const entryDiv = document.createElement('div');
     entryDiv.classList.add('entry');
-    
 
     const wordHeading = document.createElement('h2');
     wordHeading.textContent = word;
@@ -60,9 +66,6 @@ function displayResults(data) {
 
       const meaningDiv = document.createElement('div');
       meaningDiv.classList.add('meaning');
-
-      // Change the background color to pink
-      meaningDiv.style.backgroundColor = 'pink';
 
       const partOfSpeechHeading = document.createElement('h3');
       partOfSpeechHeading.textContent = `(${partOfSpeech})`;
@@ -79,7 +82,7 @@ function displayResults(data) {
 
     const favoriteBtn = document.createElement('button');
     favoriteBtn.textContent = 'Add to Favorites';
-    //click event for adding a word to favorites
+    // Click event for adding a word to favorites
     favoriteBtn.addEventListener('click', () => {
       addFavorite(word);
     });
@@ -89,6 +92,7 @@ function displayResults(data) {
   });
 }
 
+// Function to add a word to favorites
 function addFavorite(word) {
   if (!favorites.includes(word)) {
     favorites.push(word);
@@ -96,6 +100,8 @@ function addFavorite(word) {
   }
 }
 
+
+// Function to update the favorites list
 function updateFavoritesList() {
   favoritesList.innerHTML = '';
 
@@ -126,6 +132,5 @@ function updateFavoritesList() {
   });
 }
 
-
-
+// Initial function call to update the favorites list
 updateFavoritesList();
