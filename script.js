@@ -129,4 +129,3 @@ function updateFavoritesList() {
 
 
 updateFavoritesList();
-
