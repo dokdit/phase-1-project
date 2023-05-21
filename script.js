@@ -112,6 +112,7 @@ function updateFavoritesList() {
 
   favorites.forEach(word => {
     const listItem = document.createElement('li');
+
     const favoriteBtn = document.createElement('button');
     favoriteBtn.textContent = word;
     favoriteBtn.addEventListener('click', () => {
@@ -128,8 +129,24 @@ function updateFavoritesList() {
         });
     });
     listItem.appendChild(favoriteBtn);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'X';
+    removeBtn.addEventListener('click', () => {
+      removeFavorite(word);
+    });
+    listItem.appendChild(removeBtn);
+
     favoritesList.appendChild(listItem);
   });
+}
+
+function removeFavorite(word) {
+  const wordIndex = favorites.indexOf(word);
+  if (wordIndex !== -1) {
+    favorites.splice(wordIndex, 1);
+    updateFavoritesList();
+  }
 }
 
 // Initial function call to update the favorites list
