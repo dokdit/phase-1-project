@@ -131,7 +131,7 @@ function updateFavoritesList() {
     listItem.appendChild(favoriteBtn);
 
     const removeBtn = document.createElement('button');
-    removeBtn.textContent = '   x';
+    removeBtn.textContent = 'x';
     removeBtn.addEventListener('click', () => {
       removeFavorite(word);
     });
